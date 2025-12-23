@@ -30,3 +30,8 @@ app.include_router(characters_router, prefix="/api/characters")
 @app.get("/health")
 async def health():
     return {"status": "ok"}
+
+
+@app.get("/")
+async def root():
+    return {"message": "Hogwarts Faculty API — healthy"}

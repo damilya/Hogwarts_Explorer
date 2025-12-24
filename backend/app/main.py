@@ -1,10 +1,23 @@
+from dotenv import load_dotenv
+load_dotenv()
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.faculties import router as faculties_router
 from app.api.characters import router as characters_router
 import os
+import logging
+
+logger = logging.getLogger("uvicorn.error")
 
 app = FastAPI(title="Hogwarts Faculty API")
+
+
+@app.on_event("startup")
+async def _startup_checks():
+    if not os.getenv("OPENAI_API_KEY"):
+        logger.warning("OPENAI_API_KEY not set; /api/characters/chat will return an error until it's configured")
+    else:
+        logger.info("OPENAI_API_KEY is configured; chat endpoint enabled")
 
 origins = [
     "http://localhost:3000",

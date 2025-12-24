@@ -17,6 +17,8 @@ export default function FacultyPageClient({ house }: Props) {
     if (!house) return;
     setLoading(true);
     setError(null);
+    const startTime = Date.now();
+    
     try {
       const res = await fetch(`${apiBase}/api/characters/house/${house}`);
       if (!res.ok) {
@@ -26,7 +28,12 @@ export default function FacultyPageClient({ house }: Props) {
       const data = await res.json();
       setCharacters(data);
     } catch (err: any) {
-      setError(err.message || "Failed to fetch. Open browser devtools (Network/Console) for details.");
+      const elapsed = (Date.now() - startTime) / 1000;
+      const baseMsg = err.message || "Failed to fetch";
+      const hint = elapsed > 30 
+        ? " (Server cold start detected - this may take 1-2 minutes on first request)"
+        : "";
+      setError(baseMsg + hint + ". Open browser devtools (Network/Console) for details.");
     } finally {
       setLoading(false);
     }
@@ -59,10 +66,10 @@ export default function FacultyPageClient({ house }: Props) {
       <div className="mt-2">
         <button
           onClick={fetchHouse}
-          className="bg-yellow-400 text-red-900 font-bold px-4 py-2 rounded"
+          className="bg-yellow-400 text-red-900 font-bold px-4 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={loading || !house}
         >
-          {loading ? "Loading..." : `Load ${meta.displayName} Characters`}
+          {loading ? "Loading... (may take 1-2 min if server is asleep)" : `Load ${meta.displayName} Characters`}
         </button>
       </div>
 

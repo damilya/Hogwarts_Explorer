@@ -34,12 +34,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-
-## Issues I encountered
-1. - CORS issue:
-    CORS settings did not allow LAN origin and similar local IPs to establish a connection
-   - CORS issue resolution:
-    Using developer tools, I checked the message returned when I clicked the button, then pasted it to the chat and copilot helped me with the resolution.
-2. 
-

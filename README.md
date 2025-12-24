@@ -4,6 +4,11 @@ It's a fully functional project with basic functionalities to look up fictional 
 
 ## Context
 I am currently a Machine Learning developer, who is pationate about AI, yet a strong believer that simple solutions are often sufficient enough to produce value. This project was mostly vibe coded using copilot integrated into VSCode.
+I would often see a familiar issue but unsure how to tackle it, I would aks copilot to implement or correct it.
+I started with a basic page and a backend disconnected from each other, but working separately locally. I would make sure the backend is callable (see CORS issue in the bottom of the page), then when I had an MVP, I started checking how to deploy the app. I followed your recommendations and deployed the app on Vercel and Render.
+Then I decided on adding a chat possibility using LLM. I asked the copilot to implement it. The I kept tuning the code and checking that after each new commit merge, both backend and frontend are still up and running after redeployment.
+The final part was to write this README file and make sure the link I provide you is healthy and works as intended. I cannot foresee all possible issues when you access this link, but I expect everything to work smoothly. If not, please don't hesitate to reach out to me via whatsapp/email!
+
 
 ## Try it out right away!
 - Go to https://hogwarts-explorer-kk5pdqxzk-damilyas-projects.vercel.app and enjoy!

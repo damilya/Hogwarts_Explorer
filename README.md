@@ -11,7 +11,7 @@ The final part was to write this README file and make sure the link I provide yo
 
 
 ## Try it out right away!
-- Go to https://hogwarts-explorer-kk5pdqxzk-damilyas-projects.vercel.app and enjoy!
+- Go to https://hogwarts-explorer-two.vercel.app and enjoy!
 
 Select the faculty you wish you could study in, then load the characters, click on Details button and talk to a new friend!
 

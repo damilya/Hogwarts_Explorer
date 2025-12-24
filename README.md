@@ -68,3 +68,21 @@ The backend is deployed on Render
 I am not great at frontend development, but I would keep improving the UI by adding some background, animation and music.
 For the backend part, I would be interested in exploring the tuning of the OpenAI models to reflect the character traits even better.
 For the scaling part, I would also check how to make the app available to more users with minimal downtime.
+
+## Some fun chats
+Here are some entertaining conversations with Hogwarts characters:
+
+### Example 1
+![Chat with Harry Potter](./screenshots/harry.png)
+
+### Example 2
+![Chat with Draco](./screenshots/draco.png)
+
+### Example 3
+![Chat with the one you cannot name](./screenshots/vdm.png)
+
+### Example 4
+![Chat with Luna](./screenshots/luna.png)
+
+### Example 5
+![Chat with Cho](./screenshots/cho_chang.png)

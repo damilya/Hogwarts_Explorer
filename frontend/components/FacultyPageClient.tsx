@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import FACULTIES from "../data/faculties";
+import CharacterChatModal from "./CharacterChatModal";
 
 type Props = { house: string };
 
@@ -37,6 +38,19 @@ export default function FacultyPageClient({ house }: Props) {
     description: `${house ? house[0].toUpperCase() + house.slice(1) : "Faculty"} values and characters.`,
   };
 
+  const [showChat, setShowChat] = useState(false);
+  const [selectedCharacter, setSelectedCharacter] = useState<any | null>(null);
+
+  function openChat(character: any) {
+    setSelectedCharacter(character);
+    setShowChat(true);
+  }
+
+  function closeChat() {
+    setSelectedCharacter(null);
+    setShowChat(false);
+  }
+
   return (
     <section className={`${meta.bgClass} min-h-screen p-8`}>
       <h1 className="text-4xl font-bold mb-4">{meta.displayName}</h1>
@@ -62,23 +76,39 @@ export default function FacultyPageClient({ house }: Props) {
                 <div className="font-semibold truncate">{c.name}</div>
                 <div className="text-sm text-gray-200 truncate">patronus: {c.patronus ?? "unknown"}</div>
               </div>
-              {c.image ? (
-                <img
-                  src={c.image}
-                  alt={c.name + " image"}
-                  className="w-16 h-16 object-cover rounded ml-4 flex-shrink-0"
-                />
-              ) : (
-                <div
-                  className="w-16 h-16 rounded ml-4 flex-shrink-0 flex items-center justify-center bg-white/10 text-current text-2xl"
-                  aria-hidden
+
+              {/* image + button group */}
+              <div className="ml-4 flex items-center gap-3">
+                {c.image ? (
+                  <img
+                    src={c.image}
+                    alt={c.name + " image"}
+                    className="w-16 h-16 object-cover rounded flex-shrink-0"
+                  />
+                ) : (
+                  <div
+                    className="w-16 h-16 rounded flex-shrink-0 flex items-center justify-center bg-white/10 text-current text-2xl"
+                    aria-hidden
+                  >
+                    {meta.symbol ?? "🪄"}
+                  </div>
+                )}
+
+                <button
+                  onClick={() => openChat(c)}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-sm font-semibold"
+                  aria-label={`Show details for ${c.name}`}
                 >
-                  {meta.symbol ?? "🪄"}
-                </div>
-              )}
+                  Details
+                </button>
+              </div>
             </li>
           ))}
         </ul>
+      )}
+
+      {showChat && selectedCharacter && (
+        <CharacterChatModal character={selectedCharacter} onClose={closeChat} />
       )}
     </section>
   );
